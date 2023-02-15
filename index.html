@@ -1,46 +1,91 @@
-// create a variable to store the current state
-let state = 'start';
+<!DOCTYPE html>
+<html>
 
-// get references to the HTML elements
-const input = document.getElementById('input');
-const output = document.getElementById('output');
+<head>
+    <title>Welcome to the XSAs Terminal</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 20px;
+        }
 
-// add a keydown event listener to the input element
-input.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    processInput();
-  }
-});
+        #input-container {
+            display: flex;
+        }
 
-// define the processInput function
-function processInput() {
-  const inputText = input.value;
+        #input-container input {
+            background-color: black;
+            color: green;
+            border: none;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            width: 100%;
+            outline: none;
+        }
 
-  if (state === 'start' && inputText.toLowerCase() === 'login') {
-    output.innerHTML += '<p>Username:</p>';
-    input.value = '';
-    state = 'username';
-  } else if (state === 'username' && inputText.toLowerCase() === 's-0 1992') {
-    output.innerHTML += '<p>Welcome S-0.</p>';
-    input.style.display = 'none';
-    state = 'end';
-    setTimeout(function() {
-      output.innerHTML = '';
-      output.innerHTML += '<p>Enter Command:</p>';
-      input.style.display = 'inline';
-      input.value = '';
-      state = 'command';
-    }, 3000);
-  } else if (state === 'username') {
-    output.innerHTML += '<p>Password:</p>';
-    input.value = '';
-    state = 'password';
-  } else if (state === 'password') {
-    output.innerHTML += '<p>Invalid password.</p>';
-    input.value = '';
-    state = 'username';
-  } else if (state === 'command' && inputText.toLowerCase() === 'database') {
-    output.innerHTML += '<p>This is some random text.</p>';
-    input.value = '';
-  }
-}
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the XSAs Terminal</h1>
+    <p>Type "login" to continue.</p>
+
+    <div id="input-container">
+        <span>&gt;&nbsp;</span>
+        <input id="input" type="text">
+    </div>
+
+    <div id="output"></div>
+
+    <script>
+        let state = 'start';
+
+        function processInput() {
+            let input = document.getElementById('input').value;
+            let output = document.getElementById('output');
+
+            if (state === 'start' && input.toLowerCase() === 'login') {
+                output.innerHTML += '<p>Username:</p>';
+                document.getElementById('input').value = '';
+                state = 'username';
+            } else if (state === 'username' && input.toLowerCase() === 's-0 1992') {
+                output.innerHTML += '<p>Welcome to the XSA. </p>';
+                document.getElementById('input').style.display = 'none';
+                state = 'end';
+                setTimeout(function() {
+                    output.innerHTML = '';
+                    output.innerHTML += '<p>Enter Command:</p>';
+                    document.getElementById('input').style.display = 'inline';
+                    document.getElementById('input').value = '';
+                    state = 'command';
+                }, 3000);
+            } else if (state === 'username') {
+                output.innerHTML += '<p>Password:</p>';
+                document.getElementById('input').value = '';
+                state = 'password';
+            } else if (state === 'password') {
+                output.innerHTML += '<p>Invalid password.</p>';
+                document.getElementById('input').value = '';
+                state = 'username';
+            } else if (state === 'command' && input.toLowerCase() === 'database') {
+                output.innerHTML += '<p>Invalid Encryption, Contact upper management if this still continues to happen.</p>';
+                document.getElementById('input').value = '';
+            }
+        }
+
+        document.getElementById('input').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                processInput();
+            }
+        });
+    </script>
+</body>
+
+</html>
