@@ -19,6 +19,7 @@
       const consoleDiv = document.getElementById("console");
       let loggedIn = false;
       let username = "";
+      let accessCodeEntered = false;
 
       function handleInput(input) {
         if (!loggedIn) {
@@ -29,12 +30,20 @@
             consoleDiv.innerHTML += "<p>Invalid command</p>";
           }
         } else if (username === "") {
-          consoleDiv.innerHTML += "<p>Password:</p>";
-          username = input;
-        } else if (input === "XSA") {
+          if (accessCodeEntered) {
+            consoleDiv.innerHTML += "<p>Password:</p>";
+            username = input;
+          } else if (input === "ExternalCode01XSA") {
+            consoleDiv.innerHTML += "<p>Access granted, please enter your username:</p>";
+            accessCodeEntered = true;
+          } else {
+            consoleDiv.innerHTML += "<p>Invalid access code</p>";
+          }
+        } else if (input === "XSAS0" && accessCodeEntered) {
           consoleDiv.innerHTML += "<p>Welcome S-0</p>";
           loggedIn = false;
           username = "";
+          accessCodeEntered = false;
         } else {
           consoleDiv.innerHTML += "<p>Invalid command</p>";
         }
