@@ -24,6 +24,7 @@
         if (!loggedIn) {
           if (input === "Login") {
             consoleDiv.innerHTML += "<p>Username:</p>";
+            loggedIn = true;
           } else {
             consoleDiv.innerHTML += "<p>Invalid command</p>";
           }
