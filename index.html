@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Terminal Example</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="console">
+      <p>Welcome to the Terminal Example</p>
+      <p>Type "Login" to start</p>
+    </div>
+    <script>
+      const consoleDiv = document.getElementById("console");
+      let loggedIn = false;
+      let username = "";
+
+      function handleInput(input) {
+        if (!loggedIn) {
+          if (input === "Login") {
+            consoleDiv.innerHTML += "<p>Username:</p>";
+          } else {
+            consoleDiv.innerHTML += "<p>Invalid command</p>";
+          }
+        } else {
+          // handle other commands after user is logged in
+        }
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          const input = consoleDiv.lastChild.textContent.trim();
+          handleInput(input);
+          consoleDiv.innerHTML += "<p>> </p>";
+          consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        } else if (event.key.length === 1) {
+          consoleDiv.lastChild.textContent += event.key;
+        }
+      });
+    </script>
+  </body>
+</html>
