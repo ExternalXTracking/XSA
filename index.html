@@ -83,6 +83,9 @@
             } else if (state === 'command' && input.toLowerCase() === 'database') {
                 output.innerHTML += '<p>Invalid Encryption, Contact upper management if this still continues to happen.</p>';
                 document.getElementById('input').value = '';
+            } else if (state === 'command' && input.toLowerCase() === 'XPICTURENUMBER51') {
+                output.innerHTML += '<img src="https://cdn.discordapp.com/attachments/989083623514861588/1075118377405792347/IMG_20230214_102533_1.jpg">';
+                document.getElementById('input').value = '';
             }
         }
 
