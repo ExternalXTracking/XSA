@@ -76,6 +76,10 @@
                 output.innerHTML += '<p>Invalid password.</p>';
                 document.getElementById('input').value = '';
                 state = 'username';
+            } else if (state === 'command' && input.toLowerCase() === 'status') {
+                let randomMessage = Math.random() < 0.5 ? 'All systems online' : 'Invalid EVE Code network Error 501.';
+                output.innerHTML += `<p>${randomMessage}</p>`;
+                document.getElementById('input').value = '';
             } else if (state === 'command' && input.toLowerCase() === 'database') {
                 output.innerHTML += '<p>Invalid Encryption, Contact upper management if this still continues to happen.</p>';
                 document.getElementById('input').value = '';
