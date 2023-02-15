@@ -1,77 +1,92 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Aperture Science Terminal</title>
-    <style>
-      body {
-        background-color: #232323;
-        color: #A6E22E;
-        font-family: 'Courier New', Courier, monospace;
-      }
-      #terminal {
-        width: 80%;
-        max-width: 800px;
-        margin: 50px auto;
-        border: 2px solid #A6E22E;
-        border-radius: 5px;
-        padding: 20px;
-        box-shadow: 0px 0px 10px #A6E22E;
-      }
-      #prompt {
-        color: #F92672;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="terminal">
-      <p>Welcome to the Aperture Science Terminal</p>
-      <p>Type "login" to start</p>
-      <p id="prompt">&gt; </p>
+
+<head>
+  <title>Aperture Science Terminal</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: monospace;
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: flex-end;
+    }
+
+    #output {
+      height: 90%;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+
+    #input {
+      background-color: transparent;
+      border: none;
+      border-top: 1px solid #fff;
+      color: #fff;
+      font-family: monospace;
+      font-size: 20px;
+      height: 10%;
+      padding: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="output">
+      <p>Welcome to the Aperture Science Terminal.</p>
     </div>
-    <script>
-      const terminalDiv = document.getElementById("terminal");
-      const promptDiv = document.getElementById("prompt");
-      let loggedIn = false;
-      let username = "";
+    <div id="input-container">
+      <form onsubmit="return false;">
+        <input type="text" id="input" autofocus />
+      </form>
+    </div>
+  </div>
 
-      function handleInput(input) {
-        if (!loggedIn) {
-          if (input === "login") {
-            terminalDiv.innerHTML += "<p>Enter your username:</p>";
-            promptDiv.innerHTML = "&gt; Username: ";
-          }
-          else {
-            terminalDiv.innerHTML += "<p>Invalid command.</p>";
-            promptDiv.innerHTML = "&gt; ";
-          }
-        }
-        else if (username === "") {
-          terminalDiv.innerHTML += `<p>Hello, ${input}! Enter your password:</p>`;
-          username = input;
-          promptDiv.innerHTML = "&gt; Password: ";
-        }
-        else if (input === "XSA") {
-          terminalDiv.innerHTML += "<p>Login successful! Welcome, S-0.</p>";
-          loggedIn = false;
-          username = "";
-          promptDiv.innerHTML = "&gt; ";
-        }
-        else {
-          terminalDiv.innerHTML += "<p>Invalid password.</p>";
-          promptDiv.innerHTML = "&gt; Password: ";
-        }
+  <script>
+    const commands = {
+      help: 'Type "login" to log in to the terminal.',
+      login: 'Enter your username and password to continue.',
+    };
+
+    const handleCommand = (command) => {
+      let output = "";
+      if (command === "help") {
+        output = commands.help;
+      } else if (command === "login") {
+        output = commands.login;
       }
+      displayOutput(output);
+    };
 
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          const input = promptDiv.textContent.trim().split(":")[1].trim();
-          handleInput(input);
-          promptDiv.innerHTML = "&gt; ";
-          terminalDiv.scrollTop = terminalDiv.scrollHeight;
-        } else if (event.key.length === 1) {
-          promptDiv.innerHTML += event.key;
-        }
-      });
-    </script>
-  </body>
+    const displayOutput = (output) => {
+      const outputDiv = document.getElementById("output");
+      const p = document.createElement("p");
+      p.textContent = output;
+      outputDiv.appendChild(p);
+      document.getElementById("input").value = "";
+    };
+
+    const handleInput = (e) => {
+      if (e.keyCode === 13) {
+        const input = e.target.value;
+        displayOutput(`> ${input}`);
+        handleCommand(input);
+      }
+    };
+
+    document.getElementById("input").addEventListener("keydown", handleInput);
+  </script>
+</body>
+
 </html>
