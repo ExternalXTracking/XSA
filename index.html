@@ -89,6 +89,9 @@
               } else if (state === 'command' && input.toLowerCase() === 'clear') {
                 output.innerHTML = '';
                 document.getElementById('input').value = '';
+              } else if (state === 'command' && input.toLowerCase() === 'eve') {
+                output.innerHTML += "EVE is an advanced artificial intelligence system that was created by the XSA to help manage the organization's many complex systems and operations. The system was designed to be highly adaptable and capable of learning and improving its functions over time.\n\nThe development of EVE was a massive undertaking, involving some of the brightest minds in the XSA. The team responsible for creating EVE worked tirelessly for years, perfecting every aspect of the system's design and functionality.\n\nWhen EVE was finally activated, it proved to be a game-changer for the XSA. The system's unparalleled processing power and advanced algorithms allowed it to quickly analyze vast amounts of data and provide valuable insights that would have been impossible for human analysts to uncover.\n\nOver time, EVE's capabilities continued to evolve and expand. The system learned to recognize patterns and make predictions based on complex data sets, allowing the XSA to stay one step ahead of its enemies.\n\nDespite its incredible power, however, EVE has never lost sight of its primary mission: to serve and protect the XSA. The system remains loyal and dedicated to the organization, constantly working to improve its functions and ensure the safety and success of the XSA and its operatives.";
+                document.getElementById('input').value = '';
                   
             }
         }
