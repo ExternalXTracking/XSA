@@ -55,8 +55,8 @@
                 output.innerHTML += '<p>Username:</p>';
                 document.getElementById('input').value = '';
                 state = 'username';
-            } else if (state === 'username' && input.toLowerCase() === 's-0 1992') {
-                output.innerHTML += '<p>Welcome S-0.</p>';
+            } else if (state === 'username' && input.toLowerCase() === 'XSA 1992') {
+                output.innerHTML += '<p>Welcome to the XSA. </p>';
                 document.getElementById('input').style.display = 'none';
                 state = 'end';
                 setTimeout(function() {
@@ -75,7 +75,7 @@
                 document.getElementById('input').value = '';
                 state = 'username';
             } else if (state === 'command' && input.toLowerCase() === 'database') {
-                output.innerHTML += '<p>This is some random text.</p>';
+                output.innerHTML += '<p>Invalid Encryption, Contact upper management if this still continues to happen.</p>';
                 document.getElementById('input').value = '';
             }
         }
