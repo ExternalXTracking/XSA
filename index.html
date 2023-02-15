@@ -35,7 +35,7 @@
 
 <body>
     <h1>Welcome to the XSAs Terminal</h1>
-    <p>Type "login" to continue.</p>
+    <p id="login-message">Type "login" to continue.</p>
 
     <div id="input-container">
         <span>&gt;&nbsp;</span>
@@ -50,8 +50,10 @@
         function processInput() {
             let input = document.getElementById('input').value;
             let output = document.getElementById('output');
+            let loginMessage = document.getElementById('login-message');
 
             if (state === 'start' && input.toLowerCase() === 'login') {
+                loginMessage.style.display = 'none'; // hide the login message
                 output.innerHTML += '<p>Username:</p>';
                 document.getElementById('input').value = '';
                 state = 'username';
