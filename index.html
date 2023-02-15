@@ -1,56 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Terminal Example</title>
+    <title>Aperture Science Terminal</title>
     <style>
       body {
-        background-color: black;
-        color: white;
-        font-family: monospace;
+        background-color: #232323;
+        color: #A6E22E;
+        font-family: 'Courier New', Courier, monospace;
+      }
+      #terminal {
+        width: 80%;
+        max-width: 800px;
+        margin: 50px auto;
+        border: 2px solid #A6E22E;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px #A6E22E;
+      }
+      #prompt {
+        color: #F92672;
       }
     </style>
   </head>
   <body>
-    <div id="console">
-      <p>Welcome to the Terminal Example</p>
-      <p>Type "Login" to start</p>
+    <div id="terminal">
+      <p>Welcome to the Aperture Science Terminal</p>
+      <p>Type "login" to start</p>
+      <p id="prompt">&gt; </p>
     </div>
     <script>
-      const consoleDiv = document.getElementById("console");
+      const terminalDiv = document.getElementById("terminal");
+      const promptDiv = document.getElementById("prompt");
       let loggedIn = false;
       let username = "";
-      let accessCodeEntered = false;
 
       function handleInput(input) {
         if (!loggedIn) {
-          if (input === "Login") {
-            consoleDiv.innerHTML += "<p>Username:</p>";
-            loggedIn = true;
+          if (input === "login") {
+            terminalDiv.innerHTML += "<p>Enter your username:</p>";
+            promptDiv.innerHTML = "&gt; Username: ";
           }
-        } else if (username === "") {
-          if (accessCodeEntered) {
-            consoleDiv.innerHTML += "<p>Password:</p>";
-            username = input;
-          } else if (input === "ExternalCode01XSA") {
-            consoleDiv.innerHTML += "<p>Access granted, please enter your username:</p>";
-            accessCodeEntered = true;
+          else {
+            terminalDiv.innerHTML += "<p>Invalid command.</p>";
+            promptDiv.innerHTML = "&gt; ";
           }
-        } else if (input === "XSAS0" && accessCodeEntered) {
-          consoleDiv.innerHTML += "<p>Welcome S-0</p>";
+        }
+        else if (username === "") {
+          terminalDiv.innerHTML += `<p>Hello, ${input}! Enter your password:</p>`;
+          username = input;
+          promptDiv.innerHTML = "&gt; Password: ";
+        }
+        else if (input === "XSA") {
+          terminalDiv.innerHTML += "<p>Login successful! Welcome, S-0.</p>";
           loggedIn = false;
           username = "";
-          accessCodeEntered = false;
+          promptDiv.innerHTML = "&gt; ";
+        }
+        else {
+          terminalDiv.innerHTML += "<p>Invalid password.</p>";
+          promptDiv.innerHTML = "&gt; Password: ";
         }
       }
 
       document.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-          const input = consoleDiv.lastChild.textContent.trim();
+          const input = promptDiv.textContent.trim().split(":")[1].trim();
           handleInput(input);
-          consoleDiv.innerHTML += "<p>> </p>";
-          consoleDiv.scrollTop = consoleDiv.scrollHeight;
+          promptDiv.innerHTML = "&gt; ";
+          terminalDiv.scrollTop = terminalDiv.scrollHeight;
         } else if (event.key.length === 1) {
-          consoleDiv.lastChild.textContent += event.key;
+          promptDiv.innerHTML += event.key;
         }
       });
     </script>
