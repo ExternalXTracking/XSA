@@ -28,8 +28,13 @@
           } else {
             consoleDiv.innerHTML += "<p>Invalid command</p>";
           }
+        } else if (username === "") {
+          consoleDiv.innerHTML += "<p>Password:</p>";
+          username = input;
+        } else if (input === "XSA") {
+          consoleDiv.innerHTML += "<p>Welcome S-0</p>";
         } else {
-          // handle other commands after user is logged in
+          consoleDiv.innerHTML += "<p>Invalid command</p>";
         }
       }
 
