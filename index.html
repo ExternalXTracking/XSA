@@ -59,6 +59,13 @@
                 output.innerHTML += '<p>Welcome S-0.</p>';
                 document.getElementById('input').style.display = 'none';
                 state = 'end';
+                setTimeout(function() {
+                    output.innerHTML = '';
+                    output.innerHTML += '<p>Enter Command:</p>';
+                    document.getElementById('input').style.display = 'inline';
+                    document.getElementById('input').value = '';
+                    state = 'command';
+                }, 3000);
             } else if (state === 'username') {
                 output.innerHTML += '<p>Password:</p>';
                 document.getElementById('input').value = '';
@@ -67,6 +74,9 @@
                 output.innerHTML += '<p>Invalid password.</p>';
                 document.getElementById('input').value = '';
                 state = 'username';
+            } else if (state === 'command' && input.toLowerCase() === 'database') {
+                output.innerHTML += '<p>This is some random text.</p>';
+                document.getElementById('input').value = '';
             }
         }
 
