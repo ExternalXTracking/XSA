@@ -4,10 +4,16 @@
 <head>
     <title>Welcome to the XSAs Terminal</title>
     <style>
+        /* Define the custom font */
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('clacon2.ttf');
+        }
+
         body {
             background-color: black;
             color: green;
-            font-family: 'Courier New', monospace;
+            font-family: 'Classic Console Neue', monospace;
             font-size: 16px;
             line-height: 1.5;
             padding: 20px;
@@ -21,7 +27,7 @@
             background-color: black;
             color: green;
             border: none;
-            font-family: 'Courier New', monospace;
+            font-family: 'CustomFont', 'Classic Console Neue', monospace; /* Use the custom font */
             font-size: 16px;
             width: 100%;
             outline: none;
@@ -126,6 +132,12 @@
                 document.getElementById('input').value = '';
               } else if (state === 'command' && input.toLowerCase() === 'database leak 1999') {
                 output.innerHTML += "CONFIDENTIAL INTERNAL REPORT TOPIC: XSA DATABASE HACK DATE: March 10, 1999 REPORT On the evening of March 8th, the XSA database was hacked and a significant amount of confidential information was leaked. The database contained sensitive information about our operations, including member profiles, operational plans, and financial data. The breach was discovered by our IT team the following day, and immediate action was taken to investigate the situation and mitigate the damage. It appears that the breach was caused by a sophisticated cyber attack by a highly-skilled group of hackers. They were able to bypass our security measures and gain access to the database. The hackers managed to extract a large amount of data, including highly sensitive information about our operations. The implications of this breach are significant. The XSA prides itself on being a highly secure organization, and this breach has compromised the trust that our members and partners have in us. The information that was leaked could potentially be used to harm our operations and put our members in danger. The XSA will be taking all necessary steps to contain the damage and strengthen our security measures. The investigation is ongoing, and we are working closely with law enforcement and security experts to determine the scope of the breach and identify the perpetrators. In the meantime, we urge all XSA members to be vigilant and report any suspicious activity to our security team. RECOMMENDATIONS Immediately update all security protocols and firewalls to ensure that the database is not vulnerable to future attacks. Conduct a thorough investigation of the breach to determine the full extent of the damage and identify the perpetrators. Enhance security measures for all XSA operations, including physical security, IT security, and member security. Communicate transparently with all XSA members and partners about the breach and the steps being taken to address it. Continue to work closely with law enforcement and security experts to ensure the safety and security of the XSA and its members.";
+                document.getElementById('input').value = '';
+              } else if (state === 'command' && input.toLowerCase() === 'help') {
+                output.innerHTML += '<p>The following commands are available:<br>status - check system status<br>database - access encrypted database<br>xnumber51 - display image<br>clear - clear the terminal<br>eve - learn about EVE</p>';
+                document.getElementById('input').value = '';
+            } else if (state === 'command') {
+                output.innerHTML += '<p>Invalid command. Type "help" to see a list of available commands.</p>';
                 document.getElementById('input').value = '';
                 
                   
