@@ -33,6 +33,10 @@
             outline: none;
         }
 
+        #prompt {
+            color: #00ff00; /* Set the color of the prompt */
+        }
+
         #output {
             margin-top: 20px;
         }
@@ -51,11 +55,11 @@
 
     </pre>
     
-    <h1>Welcome to the XSAs Terminal</h1>
+    <h1>EVE v2.5.1 (c) 1992 External Control XSA, INC.</h1>
     <p id="login-message">Type "login" to continue.</p>
 
     <div id="input-container">
-        <span>&gt;&nbsp;</span>
+        <span id="prompt">EVE2-$</span>
         <input id="input" type="text">
     </div>
 
@@ -69,7 +73,7 @@
 
         function keypress(e) {
             if (e.keyCode == 13) {
-                div.innerHTML += "<br>" + input.value;
+                div.innerHTML += "<br><span id='prompt'>EVE2-$</span> " + input.value;
                 input.value = "";
             }
         }
@@ -81,13 +85,14 @@
             let output = document.getElementById('output');
             let loginMessage = document.getElementById('login-message');
 
+
             if (state === 'start' && input.toLowerCase() === 'login') {
                 loginMessage.style.display = 'none'; // hide the login message
                 output.innerHTML += '<p>Username:</p>';
                 document.getElementById('input').value = '';
                 state = 'username';
             } else if (state === 'username' && input.toLowerCase() === 's-0 1992') {
-                output.innerHTML += '<p>Welcome to the XSA. </p>';
+                output.innerHTML += '<p>Welcome to the XSAs Terminal</p>';
                 document.getElementById('input').style.display = 'none';
                 state = 'end';
                 setTimeout(function() {
