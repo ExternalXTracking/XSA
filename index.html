@@ -83,17 +83,7 @@
             let loginMessage = document.getElementById('login-message');
 
 
-            if (state === 'start' && input.toLowerCase() === 'login s-0 1992' ) {
-                output.innerHTML += '<p>Welcome to the XSAs Terminal</p>';
-                document.getElementById('input').style.display = 'none';
-                state = 'end';
-                setTimeout(function() {
-                    output.innerHTML = '';
-                    output.innerHTML += '<p>Enter Command:</p>';
-                    document.getElementById('input').style.display = 'inline';
-                    state = 'command';
-                }, 3000);
-            } else if (state === 'start' && input.toLowerCase() === 'login s-1 1992' ) {
+            if (state === 'start' && input.toLowerCase() === 'login guest' ) {
                 output.innerHTML += '<p>Welcome to the XSAs Terminal</p>';
                 document.getElementById('input').style.display = 'none';
                 state = 'end';
@@ -126,6 +116,31 @@
                 div.innerHTML += "<br><span id='prompt'>EVE2-$</span> ";
                 output.innerHTML += '' + input.toLowerCase() + '';
                 output.innerHTML += '<img src="https://cdn.discordapp.com/attachments/989083623514861588/1075118377405792347/IMG_20230214_102533_1.jpg">';
+                document.getElementById('input').value = '';
+              } else if (state === 'command' && input.toLowerCase() === 'xnumber52') {
+                div.innerHTML += "<br><span id='prompt'>EVE2-$</span> ";
+                output.innerHTML += '' + input.toLowerCase() + '';
+                output.innerHTML += '<img src="https://cdn.discordapp.com/attachments/1044612381302603836/1079681945987985459/IMG_20230227_102950.jpg">';
+                document.getElementById('input').value = '';
+              } else if (state === 'command' && input.toLowerCase() === 'xnumber53') {
+                div.innerHTML += "<br><span id='prompt'>EVE2-$</span> ";
+                output.innerHTML += '' + input.toLowerCase() + '';
+                output.innerHTML += '<img src="https://cdn.discordapp.com/attachments/1044612381302603836/1079681946214465536/IMG_20230227_102943.jpg">';
+                document.getElementById('input').value = '';
+              } else if (state === 'command' && input.toLowerCase() === 'xnumber54') {
+                div.innerHTML += "<br><span id='prompt'>EVE2-$</span> ";
+                output.innerHTML += '' + input.toLowerCase() + '';
+                output.innerHTML += '<img src="https://cdn.discordapp.com/attachments/1044612381302603836/1079824958529753128/IMG-e222098dd56b722d4a5c0252ee5ab510-V.jpg">';
+                document.getElementById('input').value = '';
+              } else if (state === 'command' && input.toLowerCase() === 'xnumber55') {
+                div.innerHTML += "<br><span id='prompt'>EVE2-$</span> ";
+                output.innerHTML += '' + input.toLowerCase() + '';
+                output.innerHTML += '<img src="https://cdn.discordapp.com/attachments/1044612381302603836/1079825116319465493/IMG-d36841190bbc467c259adb3946921e8f-V.jpg">';
+                document.getElementById('input').value = '';
+              } else if (state === 'command' && input.toLowerCase() === 'xnumber56') {
+                div.innerHTML += "<br><span id='prompt'>EVE2-$</span> ";
+                output.innerHTML += '' + input.toLowerCase() + '';
+                output.innerHTML += '<img src="https://cdn.discordapp.com/attachments/1044612381302603836/1079825116592078960/IMG-4f8c8e39be9fc19e1ec32271f1745ba7-V.jpg">';
                 document.getElementById('input').value = '';
               } else if (state === 'command' && input.toLowerCase() === 'clear') {
                 output.innerHTML = '';
@@ -214,7 +229,17 @@
               } else if (state === 'command' && input.toLowerCase() === 'help') {
                 div.innerHTML += "<br><span id='prompt'>EVE2-$</span> ";
                 output.innerHTML += '' + input.toLowerCase() + '';
-                output.innerHTML += '<p>The following commands are available:<br>status - check system status<br>database - access encrypted database<br>story - read about the story of the XSA<br>facilities - read about different XSA facilities<br>facility 61a - read about facility 61a<br>s-0 - read about s-0<br>s-1 - read about s-1<br>s-4 - read about s-4<br>schizophrenia - read about XSAs schizophrenia<br>super powers - read about the XSAs super powers<br>time machine - read about XSAs time machine project<br> xnumber51 - display image<br>clear - clear the terminal<br>eve - learn about EVE</p>';
+                output.innerHTML += '<p>The following commands are available:<br>status - check system status<br>database - access encrypted database<br>documents - shows all avaliable XSA documents<br>x gallery - shows all x photos<br>clear - clear the terminal<br>eve - learn about EVE</p>';
+                document.getElementById('input').value = '';
+              } else if (state === 'command' && input.toLowerCase() === 'x gallery') {
+                div.innerHTML += "<br><span id='prompt'>EVE2-$</span> ";
+                output.innerHTML += '' + input.toLowerCase() + '';
+                output.innerHTML += '<p>xnumber51<br>xnumber52<br>xnumber53<br>xnumber54<br>xnumber55<br>xnumber56<br></p>';
+                document.getElementById('input').value = '';
+              } else if (state === 'command' && input.toLowerCase() === 'documents') {
+                div.innerHTML += "<br><span id='prompt'>EVE2-$</span> ";
+                output.innerHTML += '' + input.toLowerCase() + '';
+                output.innerHTML += '<p><br>story - read about the story of the XSA<br>facilities - read about different XSA facilities<br>facility 61a - read about facility 61a<br>s-0 - read about s-0<br>s-1 - read about s-1<br>s-4 - read about s-4<br>schizophrenia - read about XSAs schizophrenia<br>super powers - read about the XSAs super powers<br>time machine - read about XSAs time machine project</p>';
                 document.getElementById('input').value = '';
             } else if (state === 'command') {
                 output.innerHTML += '<p>Invalid command. Type "help" to see a list of available commands.</p>';
